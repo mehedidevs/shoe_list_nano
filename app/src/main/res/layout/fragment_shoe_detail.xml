@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+<!--        <variable-->
+<!--            name="viewModel"-->
+<!--            type="com.udacity.shoestore.screens.shoelist.ShoeViewModel" />-->
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/img_background"
+        android:foregroundGravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_login_trans"
+            android:gravity=""
+            android:orientation="vertical"
+            android:padding="16dp">
+            <!-- Shoe Name, Company, Shoe Size and Description-->
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="center"
+                android:text="@string/add_shoe"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/txt_shoe_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:gravity="start"
+                android:text="@string/shoe_name" />
+
+            <EditText
+                android:id="@+id/et_shoe_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="emailAddress"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/shoe_name"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/txt_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="start"
+                android:text="@string/company" />
+
+            <EditText
+                android:id="@+id/et_company"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="password"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/company"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/txt_shoe_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="start"
+                android:text="@string/shoe_size" />
+
+            <EditText
+                android:id="@+id/et_shoe_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="password"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/shoe_size"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/txt_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins"
+                android:gravity="start"
+                android:text="@string/description" />
+
+            <EditText
+                android:id="@+id/et_Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="password"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/description"
+                android:inputType="textMultiLine" />
+
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="32dp"
+                android:background="@drawable/btn_backbround"
+                android:fontFamily="@font/poppins"
+                android:includeFontPadding="false"
+                android:text="@string/save"
+                android:textStyle="bold" />
+
+
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_backbround"
+                android:fontFamily="@font/poppins"
+                android:includeFontPadding="false"
+                android:text="@string/cancel"
+                android:textColor="#E91E63"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

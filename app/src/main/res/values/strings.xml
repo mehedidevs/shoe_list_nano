@@ -15,4 +15,14 @@
     <string name="thank_you_for_shoeapp_instructions">Thank you for choosing ShoeApp!\nBelow are some instructions to help you get started</string>
     <string name="view_shoe_list">View shoe list</string>
     <string name="view_instructions">View Instructions</string>
+    <string name="shoe_details">Shoe Details</string>
+    <string name="shoeimage">shoe image</string>
+    <string name="add_shoe">Add Shoe</string>
+    <string name="shoe_name">Shoe Name</string>
+    <string name="company">Company</string>
+    <string name="shoe_size">Shoe Size</string>
+    <string name="description">Description</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="logout">logout</string>
 </resources>
