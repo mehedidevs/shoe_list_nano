@@ -19,7 +19,7 @@ class WelcomeScreenFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_welcome_screen, container, false)
@@ -33,7 +33,7 @@ class WelcomeScreenFragment : Fragment() {
 
 
         findNavController().navigate(R.id.action_welcomeScreenFragment_to_instructionFragment)
-  
+
 
     }
 
