@@ -18,7 +18,7 @@ class ShoeDetailFragment : Fragment() {
 
     lateinit var binding: FragmentShoeDetailBinding
 
-    private val viewModel: ShoeViewModel by activityViewModels()
+    private val shoeViewModel: ShoeViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -26,10 +26,9 @@ class ShoeDetailFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_detail, container, false)
 
+        binding.viewModel = shoeViewModel
+        binding.lifecycleOwner = this
         setListener()
-
-
-
         return binding.root
     }
 
@@ -45,7 +44,7 @@ class ShoeDetailFragment : Fragment() {
                 val description = etDescription.text.toString().trim()
                 val size = etShoeSize.text.toString().trim()
                 val shoe = Shoe(name, size.toDouble(), company, description)
-                viewModel.addShoe(shoe)
+                shoeViewModel.addShoe(shoe)
                 findNavController().popBackStack()
 
 

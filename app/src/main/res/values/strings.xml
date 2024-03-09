@@ -25,4 +25,7 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="logout">logout</string>
+    <string name="size_format">%.2f</string>
+    <string name="email_hints">example@gmail.com</string>
+    <string name="password_hints">******</string>
 </resources>

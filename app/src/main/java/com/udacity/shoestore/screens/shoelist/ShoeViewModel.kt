@@ -15,20 +15,33 @@ class ShoeViewModel : ViewModel() {
 
         )
 
+
+
     private val _shoeList = MutableLiveData<MutableList<Shoe>>()
     val shoeList: LiveData<MutableList<Shoe>>
         get() = _shoeList
 
 
+    private val _shoe = MutableLiveData<Shoe>()
+    val shoe: LiveData<Shoe>
+        get() = _shoe
     init {
         _shoeList.postValue(shoes)
+        getLatestShoe()
     }
 
 
     fun addShoe(shoe: Shoe) {
         shoes.add(shoe)
         _shoeList.postValue(shoes)
+        getLatestShoe()
     }
 
+
+    private fun getLatestShoe() {
+        val shoe = shoes[shoes.size - 1]
+        _shoe.postValue(shoe)
+
+    }
 
 }

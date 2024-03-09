@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.loginFragment -> {
@@ -58,7 +59,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }

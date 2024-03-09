@@ -23,9 +23,8 @@ import com.udacity.shoestore.models.Shoe
 class ShoeListFragment : Fragment() {
 
 
-    private lateinit var binding: FragmentShoeListBinding
     private val viewModel: ShoeViewModel by activityViewModels()
-
+    private lateinit var binding: FragmentShoeListBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,47 +32,21 @@ class ShoeListFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
 
-        setListener()
         observers()
         setTopMenu()
 
+        binding.btnShoeDetail.setOnClickListener {
+            findNavController().navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
+        }
 
         return binding.root
     }
 
-    private fun setTopMenu() {
-        activity?.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.shoe_list_menu, menu)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.menu_logout -> {
-
-                        findNavController().navigate(R.id.action_shoeListFragment_to_loginFragment)
-
-                        Toast.makeText(activity, "logout...", Toast.LENGTH_SHORT).show()
-                        true
-                    }
-
-                    else -> false
-                }
-            }
-        }, viewLifecycleOwner)
-
-    }
 
     private fun observers() {
-
         viewModel.shoeList.observe(viewLifecycleOwner) { shoeList ->
-
             displayShoes(shoeList)
-
-
         }
-
-
     }
 
     private fun displayShoes(shoes: List<Shoe>) {
@@ -95,14 +68,24 @@ class ShoeListFragment : Fragment() {
         }
     }
 
-    private fun setListener() {
+    private fun setTopMenu() {
+        activity?.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.shoe_list_menu, menu)
+            }
 
-        binding.btnShoeDetail.setOnClickListener {
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return when (menuItem.itemId) {
+                    R.id.menu_logout -> {
+                        findNavController().navigate(R.id.action_shoeListFragment_to_loginFragment)
+                        Toast.makeText(activity, "logout...", Toast.LENGTH_SHORT).show()
+                        true
+                    }
 
-            findNavController().navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
-
-        }
-
+                    else -> false
+                }
+            }
+        }, viewLifecycleOwner)
 
     }
 

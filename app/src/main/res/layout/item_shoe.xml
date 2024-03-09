@@ -26,54 +26,42 @@
 
         <TextView
             android:id="@+id/txt_shoe_name"
+            style="@style/headline"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:fontFamily="@font/poppins"
-            android:includeFontPadding="false"
-            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
             app:layout_constraintStart_toEndOf="@id/iv_shoe"
             app:layout_constraintTop_toTopOf="@id/iv_shoe"
             tools:text="Puma Sport" />
 
         <TextView
             android:id="@+id/txt_company_name"
+            style="@style/paragraph"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-
-            android:fontFamily="@font/poppins"
-            android:includeFontPadding="false"
-            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/txt_shoe_name"
             app:layout_constraintTop_toBottomOf="@id/txt_shoe_name"
-            tools:text="Puma " />
+            tools:text="Puma" />
 
         <TextView
             android:id="@+id/txt_shoe_description"
+            style="@style/paragraph"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:fontFamily="@font/poppins"
-            android:includeFontPadding="false"
             android:maxLines="2"
-            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
             app:layout_constraintStart_toStartOf="@id/txt_shoe_name"
             app:layout_constraintTop_toBottomOf="@id/txt_company_name"
             tools:text="Puma shoes descriptions" />
 
         <TextView
             android:id="@+id/txt_shoe_size"
+            style="@style/paragraph"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins"
-            android:includeFontPadding="false"
-            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/txt_shoe_name"
             app:layout_constraintTop_toBottomOf="@id/txt_shoe_description"
             tools:text="1.0" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

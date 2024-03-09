@@ -3,9 +3,9 @@
 
     <data>
 
-<!--        <variable-->
-<!--            name="viewModel"-->
-<!--            type="com.udacity.shoestore.screens.shoelist.ShoeViewModel" />-->
+        <variable
+            name="viewModel"
+            type="com.udacity.shoestore.screens.shoelist.ShoeViewModel" />
     </data>
 
     <ScrollView
@@ -23,57 +23,61 @@
             android:gravity=""
             android:orientation="vertical"
             android:padding="16dp">
-            <!-- Shoe Name, Company, Shoe Size and Description-->
+
 
             <TextView
                 android:id="@+id/txt_title"
+                style="@style/headline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="16dp"
-                android:fontFamily="@font/poppins"
-                android:gravity="center"
-                android:text="@string/add_shoe"
-                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
-                android:textStyle="bold" />
+                android:text="@string/add_shoe" />
 
 
             <TextView
                 android:id="@+id/txt_shoe_name"
+                style="@style/paragraph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins"
                 android:gravity="start"
                 android:text="@string/shoe_name" />
 
             <EditText
                 android:id="@+id/et_shoe_name"
+                style="@style/paragraph"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="emailAddress"
-                android:fontFamily="@font/poppins"
-                android:hint="@string/shoe_name"
-                android:inputType="text" />
+                android:gravity="start"
+                android:inputType="text"
+                android:labelFor="@id/et_shoe_name"
+                android:text="@{viewModel.shoe.name}" />
 
             <TextView
+
                 android:id="@+id/txt_company"
+                style="@style/paragraph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/poppins"
+
                 android:gravity="start"
                 android:text="@string/company" />
 
             <EditText
                 android:id="@+id/et_company"
+                style="@style/paragraph"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="password"
-                android:fontFamily="@font/poppins"
-                android:hint="@string/company"
-                android:inputType="text" />
+                android:gravity="start"
+                android:inputType="text"
+                android:labelFor="@id/et_company"
+                android:text="@{viewModel.shoe.company}" />
 
             <TextView
                 android:id="@+id/txt_shoe_size"
+                style="@style/paragraph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -83,54 +87,51 @@
 
             <EditText
                 android:id="@+id/et_shoe_size"
+                style="@style/paragraph"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="password"
-                android:fontFamily="@font/poppins"
-                android:hint="@string/shoe_size"
-                android:inputType="numberDecimal" />
+                android:gravity="start"
+                android:inputType="numberDecimal"
+                android:labelFor="@id/et_shoe_size"
+                android:text="@{@string/size_format(viewModel.shoe.size)}" />
 
             <TextView
                 android:id="@+id/txt_description"
+                style="@style/paragraph"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/poppins"
                 android:gravity="start"
                 android:text="@string/description" />
 
             <EditText
                 android:id="@+id/et_Description"
+                style="@style/paragraph"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autofillHints="password"
-                android:fontFamily="@font/poppins"
-                android:hint="@string/description"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:labelFor="@id/et_Description"
+                android:text="@{viewModel.shoe.description}" />
 
 
             <Button
                 android:id="@+id/btn_save"
+                style="@style/buttons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="32dp"
-                android:background="@drawable/btn_backbround"
-                android:fontFamily="@font/poppins"
-                android:includeFontPadding="false"
-                android:text="@string/save"
-                android:textStyle="bold" />
+                android:text="@string/save" />
 
 
             <Button
                 android:id="@+id/btn_cancel"
+                style="@style/buttons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/btn_backbround"
-                android:fontFamily="@font/poppins"
-                android:includeFontPadding="false"
                 android:text="@string/cancel"
-                android:textColor="#E91E63"
-                android:textStyle="bold" />
+                android:textColor="@color/_red" />
 
         </LinearLayout>
 
