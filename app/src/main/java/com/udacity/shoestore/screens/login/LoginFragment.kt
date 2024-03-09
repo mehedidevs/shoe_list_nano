@@ -1,9 +1,11 @@
 package com.udacity.shoestore.screens.login
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -32,6 +34,7 @@ class LoginFragment : Fragment() {
 
         myViewModel.loginSuccess.observe(viewLifecycleOwner) {
 
+
             when (it) {
                 true -> {
                     findNavController().navigate(R.id.action_loginFragment_to_welcomeScreenFragment)
@@ -43,6 +46,10 @@ class LoginFragment : Fragment() {
             }
 
             myViewModel.resetLogin()
+
+            // Hide the keyboard.
+            val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.hideSoftInputFromWindow(view?.windowToken, 0)
 
         }
 
