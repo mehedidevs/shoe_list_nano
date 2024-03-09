@@ -6,17 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentLoginBinding
+import com.udacity.shoestore.screens.ShoeViewModel
 import timber.log.Timber
 
-const val savedEmail = "mehedi@gmail.com"
-const val savedPassword = "123456"
 
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
+    private val myViewModel: ShoeViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -25,24 +26,28 @@ class LoginFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
-        binding.loginFragment = this
 
+        binding.viewmodel = myViewModel
+        binding.lifecycleOwner = this
+
+        myViewModel.loginSuccess.observe(viewLifecycleOwner) {
+
+            when (it) {
+                true -> {
+                    findNavController().navigate(R.id.action_loginFragment_to_welcomeScreenFragment)
+                }
+
+                false -> {
+                    Timber.d("email or password doesn't match! ")
+                }
+            }
+
+            myViewModel.resetLogin()
+
+        }
 
         return binding.root
     }
 
-    fun userLogin() {
-        val email = binding.etEmail.text.toString().trim()
-        val password = binding.etPassword.text.toString().trim()
-
-        findNavController().navigate(R.id.action_loginFragment_to_welcomeScreenFragment)
-        if (email == savedEmail && password == savedPassword) {
-
-        } else {
-            Timber.d("email or password doesn't match! ")
-        }
-
-
-    }
 
 }

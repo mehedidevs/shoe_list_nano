@@ -5,9 +5,8 @@
     <data>
 
         <variable
-            name="loginFragment"
-            type="com.udacity.shoestore.screens.login.LoginFragment" />
-
+            name="viewmodel"
+            type="com.udacity.shoestore.screens.ShoeViewModel" />
     </data>
 
     <ScrollView
@@ -48,6 +47,7 @@
                 android:text="@string/email" />
 
             <EditText
+                android:text="@={viewmodel.email}"
                 android:id="@+id/et_email"
                 style="@style/paragraph"
                 android:layout_width="match_parent"
@@ -67,6 +67,7 @@
                 android:text="@string/password" />
 
             <EditText
+                android:text="@={viewmodel.password}"
                 android:id="@+id/et_password"
                 style="@style/paragraph"
                 android:layout_width="match_parent"
@@ -78,13 +79,13 @@
 
 
             <Button
-                android:onClick="@{() -> loginFragment.userLogin() }"
                 android:id="@+id/btn_login"
                 style="@style/buttons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="32dp"
                 android:background="@drawable/btn_backbround"
+                android:onClick="@{() -> viewmodel.onLoginClicked() }"
                 android:text="@string/login" />
 
         </LinearLayout>

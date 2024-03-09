@@ -49,6 +49,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:gravity="start"
             android:maxLines="2"
             app:layout_constraintStart_toStartOf="@id/txt_shoe_name"
             app:layout_constraintTop_toBottomOf="@id/txt_company_name"

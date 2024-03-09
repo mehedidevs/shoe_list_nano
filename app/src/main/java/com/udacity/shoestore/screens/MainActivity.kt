@@ -35,26 +35,6 @@ class MainActivity : AppCompatActivity() {
 
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration)
 
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.loginFragment -> {
-                    binding.toolbar.visibility = View.GONE
-
-                }
-                R.id.welcomeScreenFragment -> {
-                    binding.toolbar.visibility = View.GONE
-
-                }
-                R.id.instructionFragment -> {
-                    binding.toolbar.visibility = View.GONE
-
-                }
-                else -> {
-                    binding.toolbar.visibility = View.VISIBLE
-
-                }
-            }
-        }
 
     }
 
