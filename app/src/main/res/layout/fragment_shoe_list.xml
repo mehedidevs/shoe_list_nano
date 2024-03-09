@@ -6,6 +6,9 @@
 
     <data>
 
+        <variable
+            name="shoeListFragment"
+            type="com.udacity.shoestore.screens.shoelist.ShoeListFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,13 +33,14 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/btnShoeDetail"
+            android:onClick="@{() -> shoeListFragment.goToShoeDetails()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:contentDescription="@string/shoe_details"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_add"/>
+            app:srcCompat="@drawable/ic_add" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

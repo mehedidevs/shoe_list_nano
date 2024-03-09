@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="welcomeFragment"
+            type="com.udacity.shoestore.screens.welcome.WelcomeScreenFragment" />
     </data>
 
 
@@ -47,6 +50,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_welcome" />
 
         <Button
+            android:onClick="@{() -> welcomeFragment.goToInstruction()}"
             android:id="@+id/btn_instructions"
             style="@style/buttons"
             android:layout_width="wrap_content"

@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="instructionFragment"
+            type="com.udacity.shoestore.screens.instruction.InstructionFragment" />
     </data>
 
 
@@ -67,8 +70,9 @@
             app:layout_constraintTop_toBottomOf="@+id/text_instruction_title" />
 
         <Button
-            style="@style/buttons"
+            android:onClick="@{() -> instructionFragment.goToShoeList()}"
             android:id="@+id/btn_show_shoe_list"
+            style="@style/buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"

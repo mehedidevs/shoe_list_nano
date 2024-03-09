@@ -6,6 +6,11 @@
         <variable
             name="viewModel"
             type="com.udacity.shoestore.screens.shoelist.ShoeViewModel" />
+
+        <variable
+            name="shoeDetailsFragment"
+            type="com.udacity.shoestore.screens.shoedetails.ShoeDetailFragment" />
+
     </data>
 
     <ScrollView
@@ -117,6 +122,7 @@
 
 
             <Button
+                android:onClick="@{() -> shoeDetailsFragment.addShoeTask()}"
                 android:id="@+id/btn_save"
                 style="@style/buttons"
                 android:layout_width="match_parent"
@@ -126,6 +132,7 @@
 
 
             <Button
+                android:onClick="@{() -> shoeDetailsFragment.cancelTask()}"
                 android:id="@+id/btn_cancel"
                 style="@style/buttons"
                 android:layout_width="match_parent"

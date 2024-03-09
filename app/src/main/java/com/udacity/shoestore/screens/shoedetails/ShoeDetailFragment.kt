@@ -28,32 +28,26 @@ class ShoeDetailFragment : Fragment() {
 
         binding.viewModel = shoeViewModel
         binding.lifecycleOwner = this
-        setListener()
+        binding.shoeDetailsFragment = this
+
         return binding.root
     }
 
-    private fun setListener() {
 
+    fun addShoeTask() {
         binding.apply {
-            btnCancel.setOnClickListener {
-                findNavController().popBackStack()
-            }
-            btnSave.setOnClickListener {
-                val name = etShoeName.text.toString().trim()
-                val company = etCompany.text.toString().trim()
-                val description = etDescription.text.toString().trim()
-                val size = etShoeSize.text.toString().trim()
-                val shoe = Shoe(name, size.toDouble(), company, description)
-                shoeViewModel.addShoe(shoe)
-                findNavController().popBackStack()
-
-
-            }
-
-
+            val name = etShoeName.text.toString().trim()
+            val company = etCompany.text.toString().trim()
+            val description = etDescription.text.toString().trim()
+            val size = etShoeSize.text.toString().trim()
+            val shoe = Shoe(name, size.toDouble(), company, description)
+            shoeViewModel.addShoe(shoe)
+            findNavController().popBackStack()
         }
+    }
 
-
+    fun cancelTask() {
+        findNavController().popBackStack()
     }
 
 

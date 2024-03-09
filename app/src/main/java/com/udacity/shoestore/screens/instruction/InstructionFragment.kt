@@ -20,10 +20,15 @@ class InstructionFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_instruction, container, false)
-        binding.btnShowShoeList.setOnClickListener {
-            findNavController().navigate(R.id.action_instructionFragment_to_shoeListFragment)
-        }
+        binding.instructionFragment = this
         return binding.root
+    }
+
+    fun goToShoeList() {
+
+        findNavController().navigate(R.id.action_instructionFragment_to_shoeListFragment)
+
+
     }
 
 

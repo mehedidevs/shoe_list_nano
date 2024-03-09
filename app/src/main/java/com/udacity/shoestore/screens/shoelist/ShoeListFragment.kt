@@ -31,13 +31,11 @@ class ShoeListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shoe_list, container, false)
-
+        binding.shoeListFragment = this
         observers()
         setTopMenu()
 
-        binding.btnShoeDetail.setOnClickListener {
-            findNavController().navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
-        }
+
 
         return binding.root
     }
@@ -87,6 +85,10 @@ class ShoeListFragment : Fragment() {
             }
         }, viewLifecycleOwner)
 
+    }
+
+    fun goToShoeDetails() {
+        findNavController().navigate(R.id.action_shoeListFragment_to_shoeDetailFragment)
     }
 
 }

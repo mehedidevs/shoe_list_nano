@@ -4,6 +4,10 @@
 
     <data>
 
+        <variable
+            name="loginFragment"
+            type="com.udacity.shoestore.screens.login.LoginFragment" />
+
     </data>
 
     <ScrollView
@@ -74,7 +78,7 @@
 
 
             <Button
-
+                android:onClick="@{() -> loginFragment.userLogin() }"
                 android:id="@+id/btn_login"
                 style="@style/buttons"
                 android:layout_width="match_parent"
