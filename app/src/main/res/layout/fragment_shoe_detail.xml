@@ -20,6 +20,13 @@
         android:background="@drawable/img_background"
         android:foregroundGravity="center">
 
+        <!--
+    in this layout design there are some relation with
+    one view to another views and needs custom positioning.
+    so, i use  ConstraintLayout  for  flexibility and responsive layout
+    within a scrollview.
+      -->
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

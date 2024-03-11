@@ -14,6 +14,12 @@
         android:layout_height="match_parent"
         android:background="@drawable/img_background">
 
+
+        <!--   this is a simple vertical oriented layout design.
+              so, for simplicity i use linearlayout within a scrollview
+           -->
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

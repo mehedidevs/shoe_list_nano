@@ -8,7 +8,11 @@
             name="instructionFragment"
             type="com.udacity.shoestore.screens.instruction.InstructionFragment" />
     </data>
-
+    <!--
+        in this layout design there are some relation with
+        one view to another views and needs custom positioning.
+        so, i use  ConstraintLayout for  flexibility and responsive layout.
+    -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -70,13 +74,13 @@
             app:layout_constraintTop_toBottomOf="@+id/text_instruction_title" />
 
         <Button
-            android:onClick="@{() -> instructionFragment.goToShoeList()}"
             android:id="@+id/btn_show_shoe_list"
             style="@style/buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:background="@drawable/btn_backbround"
+            android:onClick="@{() -> instructionFragment.goToShoeList()}"
             android:paddingHorizontal="8dp"
             android:text="@string/view_shoe_list"
             android:textAllCaps="false"

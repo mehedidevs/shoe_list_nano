@@ -6,7 +6,12 @@
     <data>
 
     </data>
-
+    <!--
+       it is a little bit complex design. so, i use  ConstraintLayout ,
+        because it is used to create a flexible and responsive layout.
+        It allows positioning and alignment of views relative to each other,
+        offering a flat view hierarchy and efficient performance.
+    -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -44,4 +49,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 </layout>

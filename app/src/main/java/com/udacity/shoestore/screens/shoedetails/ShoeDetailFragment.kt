@@ -29,7 +29,7 @@ class ShoeDetailFragment : Fragment() {
         shoeViewModel.dataSave.observe(viewLifecycleOwner) {
             if (it) {
                 findNavController().popBackStack()
-                shoeViewModel.restSavedState()
+                shoeViewModel.resetSavedState()
             }
         }
 

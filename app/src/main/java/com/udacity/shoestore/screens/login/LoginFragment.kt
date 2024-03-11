@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentLoginBinding
@@ -19,7 +19,7 @@ import timber.log.Timber
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
-    private val myViewModel: ShoeViewModel by activityViewModels()
+    private val myViewModel: ShoeViewModel by viewModels()
 
 
     override fun onCreateView(

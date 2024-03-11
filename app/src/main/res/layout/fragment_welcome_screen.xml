@@ -9,7 +9,11 @@
             type="com.udacity.shoestore.screens.welcome.WelcomeScreenFragment" />
     </data>
 
-
+    <!--
+      in this layout design there are some relation with
+      one view to another views and needs custom positioning.
+      so, i use  ConstraintLayout for  flexibility and responsive layout.
+  -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

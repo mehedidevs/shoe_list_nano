@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
@@ -17,6 +16,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeListBinding
+import com.udacity.shoestore.databinding.ItemShoeBinding
 import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.screens.ShoeViewModel
 
@@ -51,19 +51,10 @@ class ShoeListFragment : Fragment() {
     private fun displayShoes(shoes: List<Shoe>) {
         val layout = requireView().findViewById<LinearLayout>(R.id.shoe_list_layout)
         for (shoe in shoes) {
-            val shoeItemView = layoutInflater.inflate(R.layout.item_shoe, layout, false)
-            val shoeName = shoeItemView.findViewById<TextView>(R.id.txt_shoe_name)
-            val shoeCompanyName = shoeItemView.findViewById<TextView>(R.id.txt_company_name)
-            val shoeDescription = shoeItemView.findViewById<TextView>(R.id.txt_shoe_description)
-            val shoeSize = shoeItemView.findViewById<TextView>(R.id.txt_shoe_size)
-            shoe.apply {
-                shoeName.text = name
-                shoeCompanyName.text = company
-                shoeDescription.text = description
-                shoeSize.text = "$size"
-            }
-
-            layout.addView(shoeItemView)
+            val binding: ItemShoeBinding =
+                DataBindingUtil.inflate(layoutInflater, R.layout.item_shoe, layout, false)
+            binding.shoe = shoe
+            layout.addView(binding.root)
         }
     }
 

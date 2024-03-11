@@ -116,7 +116,7 @@ class ShoeViewModel : ViewModel() {
         _dataSaved.postValue(true)
     }
 
-    fun restSavedState(){
+    fun resetSavedState() {
         _dataSaved.postValue(false)
     }
 
