@@ -1,11 +1,15 @@
 package com.udacity.shoestore.screens
 
-import androidx.databinding.ObservableField
+import android.os.Handler
+import android.os.Looper
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.udacity.shoestore.models.Shoe
-import timber.log.Timber
+import com.udacity.shoestore.models.User
+import com.udacity.shoestore.models.isEmailValid
+import com.udacity.shoestore.models.isPasswordValidLength
+
 
 const val savedEmail = "mehedi@gmail.com"
 const val savedPassword = "123456"
@@ -13,28 +17,55 @@ const val savedPassword = "123456"
 class ShoeViewModel : ViewModel() {
 
 
-    val email = ObservableField<String>()
-    val password = ObservableField<String>()
+    var email = MutableLiveData<String>()
+    var password = MutableLiveData<String>()
 
-    private val _loginSuccess = MutableLiveData<Boolean>()
-    val loginSuccess: MutableLiveData<Boolean>
-        get() = _loginSuccess
+    var errorPassword = MutableLiveData<String>()
+    var errorEmail = MutableLiveData<String>()
+
+
+    private var _userLoginData: MutableLiveData<User> = MutableLiveData<User>()
+    val userLoginData: LiveData<User>
+        get() = _userLoginData
+
+
+    private val _progressState = MutableLiveData<Boolean>(false)
+    val progressState: LiveData<Boolean>
+        get() = _progressState
+
 
     fun onLoginClicked() {
-        val email = email.get()
-        val password = password.get()
-        Timber.d("$email $password")
+        _progressState.postValue(true)
 
-        if (email == savedEmail && password == savedPassword) {
-            _loginSuccess.postValue(true)
-        } else {
-            _loginSuccess.postValue(false)
+        Handler(Looper.getMainLooper()).postDelayed({
+            val user = User(
+                email.getValue().toString(),
+                password.getValue().toString()
+            )
+            if (user.email.isEmpty()) {
+                errorEmail.postValue("Enter an email address!")
 
-        }
-    }
+            } else if (!user.email.isEmailValid()) {
+                errorEmail.postValue("Enter a valid email address")
 
-    fun resetLogin() {
-        loginSuccess.postValue(false)
+            } else if (user.password.isEmpty()) {
+                errorPassword.postValue("Enter your password!")
+
+            } else if (!user.password.isPasswordValidLength()) {
+                errorPassword.postValue("Password Length should be 6 or more !")
+
+            } else {
+                user.isLoggedIn = user.email == savedEmail && user.password == savedPassword
+                _userLoginData.postValue(user)
+
+
+            }
+            _progressState.postValue(false)
+
+
+        }, 3000)
+
+
     }
 
 

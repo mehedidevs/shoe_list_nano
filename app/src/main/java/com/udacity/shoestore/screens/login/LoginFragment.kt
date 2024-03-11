@@ -29,31 +29,53 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
 
-        binding.viewmodel = myViewModel
+        binding.loginViewModel = myViewModel
         binding.lifecycleOwner = this
 
-        myViewModel.loginSuccess.observe(viewLifecycleOwner) {
+
+        setProgressObserver()
+        setLoginObserver()
 
 
-            when (it) {
-                true -> {
-                    findNavController().navigate(R.id.action_loginFragment_to_welcomeScreenFragment)
-                }
 
-                false -> {
-                    Timber.d("email or password doesn't match! ")
-                }
+
+
+
+        return binding.root
+    }
+
+    private fun setLoginObserver() {
+        myViewModel.userLoginData.observe(viewLifecycleOwner) {
+
+            if (it.isLoggedIn) {
+                findNavController().navigate(R.id.action_loginFragment_to_welcomeScreenFragment)
+
+            } else {
+                Timber.d("email or password doesn't match! ")
             }
-
-            myViewModel.resetLogin()
 
             // Hide the keyboard.
             val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view?.windowToken, 0)
 
+
         }
 
-        return binding.root
+    }
+
+    private fun setProgressObserver() {
+        myViewModel.progressState.observe(viewLifecycleOwner) {
+
+            if (it) {
+                binding.progressBar.visibility = View.VISIBLE
+            } else {
+                binding.progressBar.visibility = View.INVISIBLE
+            }
+
+
+        }
+
+
     }
 
 
