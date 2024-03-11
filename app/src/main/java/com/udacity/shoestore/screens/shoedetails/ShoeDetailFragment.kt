@@ -1,18 +1,15 @@
 package com.udacity.shoestore.screens.shoedetails
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.udacity.shoestore.R
 import com.udacity.shoestore.databinding.FragmentShoeDetailBinding
-import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.screens.ShoeViewModel
 
 
@@ -29,26 +26,17 @@ class ShoeDetailFragment : Fragment() {
         binding.viewModel = shoeViewModel
         binding.lifecycleOwner = this
         binding.shoeDetailsFragment = this
+        shoeViewModel.dataSave.observe(viewLifecycleOwner) {
+            if (it) {
+                findNavController().popBackStack()
+                shoeViewModel.restSavedState()
+            }
+        }
+
 
         return binding.root
     }
 
-
-    fun addShoeTask() {
-        // Hide the keyboard.
-        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(view?.windowToken, 0)
-
-        binding.apply {
-            val name = etShoeName.text.toString().trim()
-            val company = etCompany.text.toString().trim()
-            val description = etDescription.text.toString().trim()
-            val size = etShoeSize.text.toString().trim()
-            val shoe = Shoe(name, size.toDouble(), company, description)
-            shoeViewModel.addShoe(shoe)
-            findNavController().popBackStack()
-        }
-    }
 
     fun cancelTask() {
         findNavController().popBackStack()

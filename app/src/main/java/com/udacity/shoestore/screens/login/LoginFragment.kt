@@ -47,6 +47,7 @@ class LoginFragment : Fragment() {
     private fun setLoginObserver() {
         myViewModel.userLoginData.observe(viewLifecycleOwner) {
 
+
             if (it.isLoggedIn) {
                 findNavController().navigate(R.id.action_loginFragment_to_welcomeScreenFragment)
 

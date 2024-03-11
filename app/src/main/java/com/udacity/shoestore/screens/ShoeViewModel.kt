@@ -84,25 +84,52 @@ class ShoeViewModel : ViewModel() {
 
 
     private val _shoe = MutableLiveData<Shoe>()
-    val shoe: LiveData<Shoe>
-        get() = _shoe
+    val etName = MutableLiveData<String>()
+    val etSize = MutableLiveData<String>()
+    val etCompany = MutableLiveData<String>()
+    val etDescription = MutableLiveData<String>()
+
 
     init {
         _shoeList.postValue(shoes)
         getLatestShoe()
     }
 
+    private val _dataSaved = MutableLiveData<Boolean>(false)
+    val dataSave: LiveData<Boolean>
+        get() = _dataSaved
 
-    fun addShoe(shoe: Shoe) {
+
+    fun addShoe() {
+        val shoe = Shoe(
+            etName.value.toString(),
+            etSize.value?.toDouble() ?: 0.0,
+            etCompany.value.toString(),
+            etDescription.value.toString(),
+            emptyList()
+        )
+
+
         shoes.add(shoe)
         _shoeList.postValue(shoes)
-        getLatestShoe()
+
+        _dataSaved.postValue(true)
+    }
+
+    fun restSavedState(){
+        _dataSaved.postValue(false)
     }
 
 
     private fun getLatestShoe() {
         val shoe = shoes[shoes.size - 1]
         _shoe.postValue(shoe)
+        shoe.apply {
+            etName.postValue(name)
+            etSize.postValue("$size")
+            etDescription.postValue(description)
+            etCompany.postValue(company)
+        }
 
     }
 
